@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_flashcard/configs/themes.dart';
 import 'package:flutter_flashcard/pages/home_page.dart';
 
 void main() {
@@ -13,8 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'English Flashcards',
-      theme: ThemeData(
-      ),
+      theme: appTheme,
       home: const HomePage(),
     );
   }
