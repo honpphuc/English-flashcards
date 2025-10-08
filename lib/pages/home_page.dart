@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_flashcard/animations/fade_in_animation.dart';
 
 import '../component/home_page/topic_tile.dart';
 import '../configs/constants.dart';
@@ -55,7 +56,10 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(height: size.height *kIconPadding,),
               ],
             ),
-            Text("English Flashcards\nTiếng Anh Thẻ Nhớ", textAlign: TextAlign.center,),
+            const FadeInAnimation(
+                child: Text("English Flashcards\nTiếng Anh Thẻ Nhớ",
+                  textAlign: TextAlign.center,
+                )),
             Column(
               children: [
                 SizedBox(
@@ -80,7 +84,7 @@ class _HomePageState extends State<HomePage> {
               flexibleSpace: FlexibleSpaceBar(
                 background: Padding(
                   padding:EdgeInsets.all(size.width * 0.10),
-                  child: Image.asset('assets/images/bigben.png'),
+                  child:FadeInAnimation(child: Image.asset('assets/images/bigben.png')),
                 ),
               ),
             ),

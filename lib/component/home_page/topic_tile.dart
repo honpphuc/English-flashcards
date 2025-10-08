@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_flashcard/animations/fade_in_animation.dart';
+import 'package:flutter_flashcard/utlis/methods.dart';
 
 class TopicTitle extends StatelessWidget {
   const TopicTitle({
@@ -11,26 +13,29 @@ class TopicTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: (){
-        print('tile tapped $topic');
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
-          borderRadius: BorderRadius.circular(30),
-        ),
-        child: Column(
-          children: [
-            Expanded(
-                flex: 2,
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Image.asset('assets/images/$topic.png'),
-                ),
-            ),
-            Expanded(child: Text(topic)),
-          ],
+    return FadeInAnimation(
+      child: GestureDetector(
+        onTap: (){
+          print('tile tapped $topic');
+          loadSession(context: context, topic: topic);
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            color: Theme.of(context).primaryColor,
+            borderRadius: BorderRadius.circular(30),
+          ),
+          child: Column(
+            children: [
+              Expanded(
+                  flex: 2,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Image.asset('assets/images/$topic.png'),
+                  ),
+              ),
+              Expanded(child: Text(topic)),
+            ],
+          ),
         ),
       ),
     );
