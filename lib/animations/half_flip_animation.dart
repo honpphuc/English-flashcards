@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class HalfFlipAnimation extends StatefulWidget {
@@ -5,8 +7,8 @@ class HalfFlipAnimation extends StatefulWidget {
     required this.child,
     required this.animate,
     required this.reset,
-    required this.flipFromHalfWay,
-    required this.animationComplete,
+      required this.flipFromHalfWay,
+      required this.animationCompleted,
     Key? key,
   }) : super(key: key);
 
@@ -14,7 +16,7 @@ class HalfFlipAnimation extends StatefulWidget {
   final bool animate;
   final bool reset;
   final bool flipFromHalfWay;
-  final VoidCallback animationComplete;
+  final VoidCallback animationCompleted;
 
   @override
   State<HalfFlipAnimation> createState() => _HalfFlipAnimationState();
@@ -31,7 +33,7 @@ class _HalfFlipAnimationState extends State<HalfFlipAnimation>
         AnimationController(vsync: this, duration: Duration(milliseconds: 1000))
           ..addListener(() {
             if (_animationController.isCompleted) {
-              widget.animationComplete.call();
+              widget.animationCompleted.call();
             }
           });
     super.initState();
@@ -45,7 +47,7 @@ class _HalfFlipAnimationState extends State<HalfFlipAnimation>
   }
 
   @override
-  didUpdateWidget(covariant HalfFlipAnimation oldWidget) {
+  didUpdateWidget(covariant oldWidget) {
     // TODO: implement didUpdateWidget
     if (widget.reset) {
       _animationController.reset();
@@ -59,9 +61,9 @@ class _HalfFlipAnimationState extends State<HalfFlipAnimation>
 
   @override
   Widget build(BuildContext context) {
-    double rotationAjustment = 0;
+    double rotationAdjustment = 0;
     if (widget.flipFromHalfWay) {
-      rotationAjustment = 3.14 / 2;
+      rotationAdjustment = pi / 2;
     }
     return AnimatedBuilder(
       animation: _animationController,
@@ -69,9 +71,9 @@ class _HalfFlipAnimationState extends State<HalfFlipAnimation>
         alignment: Alignment.center,
         transform: Matrix4.identity()
           ..setEntry(3, 2, 0.001)
-          ..rotateY((_animationController.value * 3.14) / 2)
-          ..rotateY(rotationAjustment),
-        child: widget.child,
+          ..rotateY((_animationController.value * pi) / 2)
+            ..rotateY(rotationAdjustment),
+          child: widget.child,
       ),
     );
   }

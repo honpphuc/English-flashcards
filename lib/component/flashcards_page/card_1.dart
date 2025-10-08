@@ -9,8 +9,8 @@ import '../../notifier/flashcards_notifier.dart';
 
 class Card1 extends StatelessWidget {
   const Card1({
-    super.key,
-  });
+    Key? key,
+  }): super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +24,11 @@ class Card1 extends StatelessWidget {
           animate: notifier.flipcard1,
           reset: false,
           flipFromHalfWay: false,
-          animationComplete: (){
+          animationCompleted: (){
             notifier.runFlipCard2();
           },
           child: SlideAnimation(
-            direction: SlideDirection.leftIn,
+            direction: SlideDirection.upIn,
             child: Center(
               child: Container(
                 width: size.width * 0.9,
