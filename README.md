@@ -1,16 +1,41 @@
-# flutter_flashcard
+# **🎓 DỰ ÁN CUỐI KỲ HỌC PHẦN: LẬP TRÌNH THIẾT BỊ DI ĐÔNG**
 
-A new Flutter project.
+## **🔖 Tên đề tài: Ứng dụng học từ vựng Tiếng Anh**
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+###**📌 Thông tin chung**
 
-A few resources to get you started if this is your first Flutter project:
+**Môn học**: Lập trình cho thiết bị di động
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+**Giảng viên hướng dẫn**: Nguyễn Văn Cường
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**Học kỳ**: 1 năm học 2025 - 2026
+
+**Nhóm**: Nhóm 5
+
+**Lớp**: Lập trình cho thiết bị di động (N06)
+
+---
+
+### **👥 Thành viên nhóm**
+
+| Họ và tên | MSSV | Vai trò |
+|-----|----------|---------|
+| Lê Hồng Phúc | 23010746 |null|
+| Nguyễn Văn Lượng | 23010799 |null|
+
+---
+
+### **🎯 Mục tiêu dự án**
+
+
+*   Giúp người dùng ghi nhớ và ôn tập từ vựng tiếng Anh một cách nhanh chóng và thuận tiện.
+*   Xây dựng giao diện đơn giản, dễ dùng, tập trung vào hiển thị flashcard (mặt trước: từ mới, mặt sau: nghĩa + ví dụ).
+*   Cho phép tạo và quản lý bộ thẻ từ (theo chủ đề như: Du lịch, Công nghệ, Học tập...).
+
+---
+
+### **⚙️ Công nghệ sử dụng**
+
+* Dart
