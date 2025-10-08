@@ -4,7 +4,7 @@
 
 ---
 
-###**📌 Thông tin chung**
+### **📌 Thông tin chung**
 
 **Môn học**: Lập trình cho thiết bị di động
 
@@ -18,7 +18,7 @@
 
 ---
 
-###**👥 Thành viên nhóm**
+### **👥 Thành viên nhóm**
 
 | Họ và tên | MSSV | Vai trò |
 |-----|----------|---------|
