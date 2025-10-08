@@ -71,8 +71,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
-        centerTitle: true,
-        elevation: 0,
       ),
       body: Padding(
         padding:EdgeInsets.only(left: widthPadding, right: widthPadding),

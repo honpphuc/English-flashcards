@@ -14,6 +14,8 @@ final appTheme = ThemeData(
   ),
 
   appBarTheme: AppBarTheme(
+    elevation: 0,
+    centerTitle: true,
     titleTextStyle: TextStyle(
       fontFamily: GoogleFonts.notoSans().fontFamily,
       fontSize: 24,
