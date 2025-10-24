@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_flashcard/component/flashcards_page/tts_button.dart';
 import 'package:flutter_flashcard/notifier/flashcards_notifier.dart';
 import 'package:provider/provider.dart';
 
@@ -19,11 +20,14 @@ class CardDisplay extends StatelessWidget {
                   buildTextBox(notifier.word1.english, context, 1),
                 ],
               )
-            : Column(children: [
-              buildImage(notifier.word2.english),
-              buildTextBox(notifier.word2.character, context, 2),
-              buildTextBox(notifier.word2.vietnamese, context, 1),
-        ]),
+            : Column(
+                children: [
+                  buildImage(notifier.word2.english),
+                  buildTextBox(notifier.word2.character, context, 2),
+                  buildTextBox(notifier.word2.vietnamese, context, 1),
+                  TTSButton(),
+                ],
+              ),
       ),
     );
   }
@@ -35,15 +39,11 @@ class CardDisplay extends StatelessWidget {
         width: double.infinity,
         height: double.infinity,
         child: FittedBox(
-          child: Text(
-            text,
-            style: Theme.of(context).textTheme.displayLarge,
-          ),
+          child: Text(text, style: Theme.of(context).textTheme.displayLarge),
         ),
       ),
     );
   }
-
 
   Expanded buildImage(String image) {
     return Expanded(
