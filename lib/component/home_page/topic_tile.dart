@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_flashcard/animations/fade_in_animation.dart';
+import 'package:flutter_flashcard/configs/constants.dart';
 import 'package:flutter_flashcard/utlis/methods.dart';
 
 class TopicTitle extends StatelessWidget {
@@ -22,7 +23,7 @@ class TopicTitle extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             color: Theme.of(context).primaryColor,
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(kCircularBorderRadius),
           ),
           child: Column(
             children: [

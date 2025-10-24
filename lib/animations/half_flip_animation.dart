@@ -9,8 +9,8 @@ class HalfFlipAnimation extends StatefulWidget {
     required this.reset,
       required this.flipFromHalfWay,
       required this.animationCompleted,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final Widget child;
   final bool animate;
@@ -30,7 +30,7 @@ class _HalfFlipAnimationState extends State<HalfFlipAnimation>
   initState() {
     // TODO: implement initState
     _animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 1000))
+        AnimationController(vsync: this, duration: Duration(milliseconds: 300))
           ..addListener(() {
             if (_animationController.isCompleted) {
               widget.animationCompleted.call();

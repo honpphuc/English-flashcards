@@ -15,20 +15,30 @@ class FlashcardsPage extends StatefulWidget {
 
 class _FlashcardsPageState extends State<FlashcardsPage> {
   @override
+  void initState(){
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      final flashcardNotifier = Provider.of<FlashcardNotiFier>(context, listen: false);
+      flashcardNotifier.runSlideCard1();
+      flashcardNotifier.generateAllSelectedWords();
+      flashcardNotifier.generateCurrentWord();
+    });
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
-
-
-
     return Consumer<FlashcardNotiFier>(
       builder: (_, notifier, __) => Scaffold(
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(56),
             child: CustomAppBar()),
-        body: Stack(
-          children: [
-            Card2(),
-            Card1(),
-          ],
+        body: IgnorePointer(
+          ignoring: notifier.ignoreTouchers,
+          child: Stack(
+            children: [
+              Card2(),
+              Card1(),
+            ],
+          ),
         ),
       ),
     );

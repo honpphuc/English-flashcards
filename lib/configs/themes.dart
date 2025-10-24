@@ -11,6 +11,12 @@ final appTheme = ThemeData(
       fontSize: 18,
       fontFamily: GoogleFonts.notoSans().fontFamily
     ),
+    displayLarge: TextStyle(
+        color: Colors.black,
+        fontSize: 58,
+        fontFamily: GoogleFonts.notoSans().fontFamily,
+        fontWeight: FontWeight.bold,
+    ),
   ),
 
   appBarTheme: AppBarTheme(

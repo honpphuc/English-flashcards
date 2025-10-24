@@ -1,12 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_flashcard/enums/slide_direction.dart';
 
+import '../configs/constants.dart';
+
 class SlideAnimation extends StatefulWidget {
-  const SlideAnimation({required this.child,required this.direction,this.animate = true, Key? key}) : super(key: key);
+  const SlideAnimation({
+    required this.child,
+    required this.direction,
+    this.animate = true,
+    super.key,
+    this.reset,
+    this.animationCompleted,
+    this.animationDuration = kSlideAwayDuration,
+    this.animationDelay = 0,
+  });
 
   final Widget child;
   final SlideDirection direction;
   final bool animate;
+  final bool? reset;
+  final VoidCallback? animationCompleted;
+  final int animationDuration;
+  final int animationDelay;
 
   @override
   State<SlideAnimation> createState() => _SlideAnimationState();
@@ -19,23 +34,35 @@ class _SlideAnimationState extends State<SlideAnimation>
   @override
   initState() {
     // TODO: implement initState
-    _animationController = AnimationController(
-      vsync: this,
-      duration: Duration(milliseconds: 3000),
-    );
-    if(widget.animate){
-      _animationController.forward();
-    }
-    _animationController.forward();
-
+    _animationController =
+        AnimationController(
+          vsync: this,
+          duration: Duration(milliseconds: widget.animationDuration),
+        )..addListener(() {
+          if (_animationController.isCompleted) {
+            widget.animationCompleted?.call();
+          }
+        });
     super.initState();
   }
 
   @override
   didUpdateWidget(covariant oldWidget) {
     // TODO: implement didUpdateWidget
-    if(widget.animate){
-      _animationController.forward();
+    if (widget.reset == true) {
+      _animationController.reset();
+    }
+
+    if (widget.animate) {
+      if(widget.animationDelay > 0) {
+        Future.delayed(Duration(milliseconds: widget.animationDelay),(){
+          if(mounted) {
+            _animationController.forward();
+          }
+        });
+      }else{
+        _animationController.forward();
+      }
     }
     super.didUpdateWidget(oldWidget);
   }
@@ -49,10 +76,10 @@ class _SlideAnimationState extends State<SlideAnimation>
 
   @override
   Widget build(BuildContext context) {
-    late final Animation<Offset> _animation;
+    late final Animation<Offset> animation;
     Tween<Offset> tween;
-    
-    switch(widget.direction){
+
+    switch (widget.direction) {
       case SlideDirection.leftAway:
         tween = Tween<Offset>(begin: Offset(0, 0), end: Offset(-1, 0));
         break;
@@ -72,8 +99,9 @@ class _SlideAnimationState extends State<SlideAnimation>
         tween = Tween<Offset>(begin: Offset(0, 0), end: Offset(0, 0));
         break;
     }
-    _animation = tween.animate(CurvedAnimation(
-        parent: _animationController, curve: Curves.easeInOut));
-    return SlideTransition(position: _animation, child: widget.child);
+    animation = tween.animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
+    );
+    return SlideTransition(position: animation, child: widget.child);
   }
 }
