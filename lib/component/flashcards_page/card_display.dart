@@ -50,7 +50,7 @@ class CardDisplay extends StatelessWidget {
       flex: 4,
       child: Padding(
         padding: const EdgeInsets.all(18.0),
-        child: Image.asset('assets/images/${image}.png'),
+        child: Image.asset('assets/images/$image.png'),
       ),
     );
   }

@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  List <String> _topics = [];
+  final List <String> _topics = [];
 
   @override
   initState(){
@@ -29,6 +29,7 @@ class _HomePageState extends State<HomePage> {
   }
 
 
+  @override
   Widget build(BuildContext context) {
 
     final size = MediaQuery.of(context).size;

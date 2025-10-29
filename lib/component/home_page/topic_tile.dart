@@ -6,9 +6,9 @@ import 'package:flutter_flashcard/utlis/methods.dart';
 
 class TopicTitle extends StatelessWidget {
   const TopicTitle({
-    Key? key,
+    super.key,
     required this.topic,
-  }) : super(key: key) ;
+  }) ;
 
   final String topic;
 

@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_flashcard/component/flashcards_page/results_box.dart';
 import 'package:flutter_flashcard/configs/constants.dart';
@@ -10,6 +9,8 @@ import 'package:flutter_flashcard/models/word.dart';
 
 class FlashcardNotiFier extends ChangeNotifier {
 
+  int roundTally = 0, cardTally = 0, correctTally = 0, incorrectTally = 0, correctPercent = 0;
+
   List<Word> incorrectCards = [];
 
   String topic = "";
@@ -18,6 +19,11 @@ class FlashcardNotiFier extends ChangeNotifier {
   List<Word> selectedWords = [];
 
   bool isFirstRound = true, isRoundCompleted = false, isSessionCompleted = false;
+
+  caculateCorrectPercentage(){
+    final percentage = correctTally / cardTally;
+    correctPercent = (percentage * 100).round();
+  }
 
   reset(){
     isFirstRound = true;
@@ -32,6 +38,7 @@ class FlashcardNotiFier extends ChangeNotifier {
   }
 
   generateAllSelectedWords(){
+    roundTally++;
     selectedWords.clear();
     isRoundCompleted = false;
     if(isFirstRound) {
@@ -40,6 +47,10 @@ class FlashcardNotiFier extends ChangeNotifier {
       selectedWords = incorrectCards.toList();
       incorrectCards.clear();
     }
+    roundTally++;
+    cardTally = selectedWords.length;
+    correctTally = 0;
+    incorrectTally = 0;
   }
 
   generateCurrentWord({required BuildContext context}) {
@@ -54,6 +65,7 @@ class FlashcardNotiFier extends ChangeNotifier {
       }
       isRoundCompleted = true;
       isFirstRound = false;
+      caculateCorrectPercentage();
       Future.delayed(Duration(milliseconds: 500), (){
         showDialog(context: context, builder: (context) => ResultsBox());
       });
@@ -66,8 +78,13 @@ class FlashcardNotiFier extends ChangeNotifier {
   updateCardOutcome({required Word word, required bool isCorrect}){
     if(!isCorrect){
       incorrectCards.add(word);
+      incorrectTally++;
+    }else{
+      correctTally++;
     }
-    incorrectCards.forEach((element) => print(element.english));
+    // for (var element in incorrectCards) {
+    //   print(element.english);
+    // }
     notifyListeners();
   }
 
