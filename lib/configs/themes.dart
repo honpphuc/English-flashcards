@@ -58,4 +58,9 @@ final appTheme = ThemeData(
       ),
     ),
   ),
+
+  progressIndicatorTheme: ProgressIndicatorThemeData(
+    color: kCyanBlue,
+    linearTrackColor: Colors.grey,
+  ),
 );

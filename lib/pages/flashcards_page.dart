@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../component/app/custom_appbar.dart';
 import '../component/flashcards_page/card_1.dart';
 import '../component/flashcards_page/card_2.dart';
+import '../component/flashcards_page/progress_bar.dart';
 
 class FlashcardsPage extends StatefulWidget {
   const FlashcardsPage({super.key});
@@ -35,6 +36,9 @@ class _FlashcardsPageState extends State<FlashcardsPage> {
           ignoring: notifier.ignoreTouchers,
           child: Stack(
             children: [
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: ProgressBar()),
               Card2(),
               Card1(),
             ],

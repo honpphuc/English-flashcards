@@ -25,6 +25,17 @@ class FlashcardNotiFier extends ChangeNotifier {
     correctPercent = (percentage * 100).round();
   }
 
+  double percentCompleted = 0.0;
+
+  caculateCompletedPercent(){
+    percentCompleted = (correctTally + incorrectTally) / cardTally;
+    notifyListeners();
+  }
+
+  resetProgressBar(){
+    percentCompleted = 0.0;
+    notifyListeners();
+  }
   reset(){
     isFirstRound = true;
     isRoundCompleted = false;
@@ -51,6 +62,7 @@ class FlashcardNotiFier extends ChangeNotifier {
     cardTally = selectedWords.length;
     correctTally = 0;
     incorrectTally = 0;
+    resetProgressBar();
   }
 
   generateCurrentWord({required BuildContext context}) {
@@ -82,6 +94,7 @@ class FlashcardNotiFier extends ChangeNotifier {
     }else{
       correctTally++;
     }
+    caculateCompletedPercent();
     // for (var element in incorrectCards) {
     //   print(element.english);
     // }
