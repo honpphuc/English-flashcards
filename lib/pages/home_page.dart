@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_flashcard/animations/fade_in_animation.dart';
+import 'package:flutter_flashcard/pages/settings_page.dart';
+import 'package:provider/provider.dart';
 
 import '../component/home_page/topic_tile.dart';
 import '../configs/constants.dart';
 import '../data/words.dart';
+import '../notifier/flashcards_notifier.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -50,9 +53,15 @@ class _HomePageState extends State<HomePage> {
           children: [
             Column(
               children: [
-                SizedBox(
-                  width: size.width * kIconPadding,
-                  child: Image.asset('assets/images/Settings.png'),
+                GestureDetector(
+                  onTap: (){
+                    Provider.of<FlashcardNotiFier>(context, listen: false).setTopic(topic: 'Settings');
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsPages()));
+                  },
+                  child: SizedBox(
+                    width: size.width * kIconPadding,
+                    child: Image.asset('assets/images/Settings.png'),
+                  ),
                 ),
                 SizedBox(height: size.height *kIconPadding,),
               ],

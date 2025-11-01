@@ -28,7 +28,7 @@ class CustomAppBar extends StatelessWidget {
           ),
         ],
         leading: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(16),
           child: Hero(
             tag: notifier.topic,
             child: Image.asset('assets/images/${notifier.topic}.png'),

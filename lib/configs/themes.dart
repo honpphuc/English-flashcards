@@ -63,4 +63,7 @@ final appTheme = ThemeData(
     color: kCyanBlue,
     linearTrackColor: Colors.grey,
   ),
+  switchTheme: SwitchThemeData(
+    thumbColor: WidgetStateProperty.all<Color>(Colors.white),
+  )
 );

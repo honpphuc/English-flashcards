@@ -1,0 +1,1 @@
+enum Settings {englishFirst, showVietnamese, audioOnly}

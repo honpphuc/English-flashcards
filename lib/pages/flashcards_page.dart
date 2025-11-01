@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_flashcard/configs/constants.dart';
 import 'package:flutter_flashcard/notifier/flashcards_notifier.dart';
 import 'package:provider/provider.dart';
 
@@ -30,7 +31,7 @@ class _FlashcardsPageState extends State<FlashcardsPage> {
     return Consumer<FlashcardNotiFier>(
       builder: (_, notifier, __) => Scaffold(
         appBar: PreferredSize(
-            preferredSize: Size.fromHeight(56),
+            preferredSize: Size.fromHeight(kAppBarHeight),
             child: CustomAppBar()),
         body: IgnorePointer(
           ignoring: notifier.ignoreTouchers,

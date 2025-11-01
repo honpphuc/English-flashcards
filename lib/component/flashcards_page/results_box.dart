@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import '../../pages/home_page.dart';
 
 class ResultsBox extends StatelessWidget {
-  const ResultsBox({Key? key}) : super(key: key);
+  const ResultsBox({super.key});
 
   @override
   Widget build(BuildContext context) {
