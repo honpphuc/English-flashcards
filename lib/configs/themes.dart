@@ -65,5 +65,17 @@ final appTheme = ThemeData(
   ),
   switchTheme: SwitchThemeData(
     thumbColor: WidgetStateProperty.all<Color>(Colors.white),
+  ),
+  listTileTheme: ListTileThemeData(
+    tileColor: kCyanBlue,
+    textColor: Colors.white,
+    iconColor: Colors.white,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(kCircularBorderRadius),
+      side: BorderSide(
+        color: Colors.white,
+        width: 2,
+      )
+    )
   )
 );

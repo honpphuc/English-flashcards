@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_flashcard/notifier/flashcards_notifier.dart';
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:provider/provider.dart';
+
+import '../../models/word.dart';
 
 class TTSButton extends StatefulWidget {
-  const TTSButton({super.key});
+  const TTSButton({super.key, required this.word, this.iconSize = 50});
+
+  final Word word;
+  final double iconSize;
 
   @override
   State<TTSButton> createState() => _TtsButtonState();
@@ -16,8 +19,11 @@ class _TtsButtonState extends State<TTSButton> {
 
   @override
   void initState() {
+    Future.delayed(Duration(milliseconds: 500), () {
+      _setUpTts();
+    });
     // TODO: implement initState
-    _setUpTts();
+
     super.initState();
   }
 
@@ -30,23 +36,21 @@ class _TtsButtonState extends State<TTSButton> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<FlashcardNotiFier>(
-      builder: (_, notifier, __) => Expanded(
-        child: IconButton(
-          onPressed: () {
-            _runTts(text: notifier.word1.character);
-            _isTapped = true;
+    return Expanded(
+      child: IconButton(
+        onPressed: () {
+          _runTts(text: widget.word.character);
+          _isTapped = true;
+          setState(() {});
+          Future.delayed(Duration(milliseconds: 500), () {
+            _isTapped = false;
             setState(() {});
-            Future.delayed(Duration(milliseconds: 500), () {
-              _isTapped = false;
-              setState(() {});
-            });
-          },
-          icon: Icon(
-            Icons.audiotrack,
-            size: 50,
-            color: _isTapped ? Colors.black : Colors.white,
-          ),
+          });
+        },
+        icon: Icon(
+          Icons.audiotrack,
+          size: widget.iconSize,
+          color: _isTapped ? Colors.black : Colors.white,
         ),
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_flashcard/component/flashcards_page/tts_button.dart';
+import 'package:flutter_flashcard/component/app/tts_button.dart';
 import 'package:flutter_flashcard/notifier/flashcards_notifier.dart';
 import 'package:flutter_flashcard/notifier/settings_notifier.dart';
 import 'package:provider/provider.dart';
@@ -31,7 +31,7 @@ class CardDisplay extends StatelessWidget {
                 ? Column(
                     children: [
                       if(audioOnly) ... [
-                        TTSButton()
+                        TTSButton(word: notifier.word1,)
                       ] else if(showVietnamese) ... [
                         buildTextBox(notifier.word1.character, context, 3),
                         showVietnamese ? buildTextBox(notifier.word1.vietnamese, context, 1) : SizedBox(),
@@ -48,11 +48,11 @@ class CardDisplay extends StatelessWidget {
                         buildTextBox(notifier.word2.english, context, 2),
                         buildTextBox(notifier.word2.character, context, 2),
                         showVietnamese ? buildTextBox(notifier.word2.vietnamese, context, 1) : SizedBox(),
-                        TTSButton(),
+                        TTSButton(word: notifier.word1),
                       ] else if(showVietnamese) ... [
                         buildImage(notifier.word2.english),
                         buildTextBox(notifier.word2.english, context, 2),
-                        TTSButton(),
+                        TTSButton(word: notifier.word1),
                       ] else ... [
                         buildImage(notifier.word2.english),
                         buildTextBox(notifier.word2.character, context, 2),

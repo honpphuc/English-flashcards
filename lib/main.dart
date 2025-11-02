@@ -1,18 +1,23 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_flashcard/configs/themes.dart';
 import 'package:flutter_flashcard/notifier/flashcards_notifier.dart';
+import 'package:flutter_flashcard/notifier/language_button_notifier.dart';
 import 'package:flutter_flashcard/notifier/settings_notifier.dart';
 import 'package:flutter_flashcard/pages/home_page.dart';
+import 'package:flutter_flashcard/utlis/methods.dart';
 import 'package:provider/provider.dart';
 
-
 void main() {
-  runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider(create: (_) => FlashcardNotiFier()),
-      ChangeNotifierProvider(create: (_) => SettingsNotifier())
-    ],
-      child: const MyApp()));
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => FlashcardNotiFier()),
+        ChangeNotifierProvider(create: (_) => SettingsNotifier()),
+        ChangeNotifierProvider(create: (_) => LanguageButtonNotifier()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -20,6 +25,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    updatePreferencesOnRestart(context: context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'English Flashcards',
@@ -28,4 +34,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
